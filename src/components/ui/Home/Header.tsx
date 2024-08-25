@@ -76,8 +76,8 @@ const Header = () => {
             <Link to="/login">
               <CustomButton2
                 text="Login"
-                bgColor="#14a0d1"
-                textColor="#FFFFFF"
+                bgColor="#FFFFFF"
+                textColor="#111111"
               />
             </Link>
             <Link to="/register">
