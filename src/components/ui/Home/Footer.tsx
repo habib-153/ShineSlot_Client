@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <>
       <footer className="bg-[#f2f2f2] p-10 bg-base-200 text-base-content">
-      <div className="max-w-[1200px] mx-auto grid sm:grid-cols-2 gap-12 md:grid-cols-4 items-center text-[#1a1c1cfd]  footer">
+      <div className="container mx-auto grid sm:grid-cols-2 gap-12 md:grid-cols-4 items-center text-[#1a1c1cfd]  footer">
         <aside>
           {/* <img className="my-3 size-16" src={logo} alt="" /> */}
           <p>

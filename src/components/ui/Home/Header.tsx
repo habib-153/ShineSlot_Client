@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <div className="bg-[#1a1c1cfd]">
       <Navbar
-        className="mx-auto max-w-[1200px] bg-transparent border-0 px-0  w-full py-3"
+        className="mx-auto container bg-transparent border-0 px-0  w-full py-3"
         placeholder=""
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
@@ -80,7 +80,7 @@ const Header = () => {
                 textColor="#111111"
               />
             </Link>
-            <Link to="/register">
+            <Link to="/signUp">
               <CustomButton2 text="Sign Up" textColor="#FFFFFF" />
             </Link>
           </div>
@@ -95,7 +95,7 @@ const Header = () => {
                 textColor="#FFFFFF"
               />
             </Link>
-            <Link to="/register">
+            <Link to="/signUp">
               <CustomButton2 text="Sign Up" textColor="#FFFFFF" />
             </Link>
           </div>
