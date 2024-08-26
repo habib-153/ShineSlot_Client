@@ -17,7 +17,7 @@ const CustomButton = ({ text , bgColor, textColor }: CustomButtonProps) => {
       style={bgColor
         ? { backgroundColor: bgColor, color: textColor }
         : { color: textColor }}
-      className="font-normal text-lg flex items-center gap-2 py-2 px-4 rounded-xl normal-case" >
+      className="font-normal text-base flex hover:shadow-[#111111] items-center gap-2 py-2 px-4 rounded-lg normal-case" >
       {text} <MdOutlineArrowOutward className="text-xl" />
     </Button>
   );

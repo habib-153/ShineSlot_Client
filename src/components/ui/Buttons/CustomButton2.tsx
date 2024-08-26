@@ -16,7 +16,7 @@ const CustomButton2 = ({ text , bgColor, textColor }: CustomButtonProps) => {
       style={bgColor
         ? { backgroundColor: bgColor, color: textColor }
         : { color: textColor, border: `1px solid ${textColor}` }}
-      className="font-normal text-base py-2 px-4 rounded-lg normal-case" >
+      className="font-normal text-base py-2 px-4 rounded-lg normal-case hover:shadow-md" >
       {text}
     </Button>
   );
