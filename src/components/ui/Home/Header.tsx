@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Collapse, IconButton, Navbar } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
-import CustomButton2 from "../Buttons/CustomButton2";
+import NavAction from "./NavAction";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -52,7 +52,6 @@ const Header = () => {
             className="mr-4 cursor-pointer py-1.5 font-bold text-xl flex items-center gap-2"
           >
             <p>Shine Slot</p>
-            {/* <img className="size-6" src={logo} alt="" /> */}
           </NavLink>
           <div className="hidden lg:block">
             <NavList />
@@ -72,33 +71,13 @@ const Header = () => {
               <Bars3Icon className="h-6 w-6" />
             )}
           </IconButton>
-          <div className="lg:flex hidden  items-center gap-2">
-            <Link to="/login">
-              <CustomButton2
-                text="Login"
-                bgColor="#FFFFFF"
-                textColor="#111111"
-              />
-            </Link>
-            <Link to="/signUp">
-              <CustomButton2 text="Sign Up" textColor="#FFFFFF" />
-            </Link>
+          <div className="lg:block hidden">
+            <NavAction />
           </div>
         </div>
         <Collapse open={openNav}>
           <NavList />
-          <div className="flex  items-center gap-2">
-            <Link to="/login">
-              <CustomButton2
-                text="Login"
-                bgColor="#14a0d1"
-                textColor="#FFFFFF"
-              />
-            </Link>
-            <Link to="/signUp">
-              <CustomButton2 text="Sign Up" textColor="#FFFFFF" />
-            </Link>
-          </div>
+          <NavAction/>
         </Collapse>
       </Navbar>
     </div>

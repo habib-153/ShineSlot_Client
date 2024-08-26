@@ -1,6 +1,6 @@
 import { Button } from "@material-tailwind/react";
 
-interface CustomButtonProps {
+type CustomButtonProps = {
   text: string;
   bgColor?: string;
   textColor: string;

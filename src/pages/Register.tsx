@@ -4,13 +4,14 @@ import CustomForm from "../components/form/CustomForm";
 import CustomInput from "../components/form/CustomInput";
 import { useSignUpMutation } from "../redux/features/auth/authApi";
 import { toast } from "sonner";
+import { FieldValues } from "react-hook-form";
 
 const Register = () => {
   const navigate = useNavigate();
   const [signUp] = useSignUpMutation();
 
-  const onSubmit = async (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: FieldValues) => {
+    // console.log(data);
     const toastId = toast.loading("Signing Up...");
     const userInfo = {
       ...data,
