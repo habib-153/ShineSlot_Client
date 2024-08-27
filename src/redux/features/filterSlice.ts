@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TFilterInitialState } from "../../types";
+import { TQueryInitialState } from "../../types/global";
 
-const initialState : TFilterInitialState = {
+const initialState : TQueryInitialState = {
     searchTerm: '',
-    categories: [],
+    filters: [],
     sort: ''
 }
 
@@ -14,24 +14,24 @@ export const filterSlice = createSlice({
         setSearchTerm: (state, action) => {
             state.searchTerm = action.payload;
         },
-        setCategories: (state, action) => {
-            if(!state.categories.includes(action.payload)){
-                state.categories.push(action.payload);
+        setFilter: (state, action) => {
+            if(!state.filters.includes(action.payload)){
+                state.filters.push(action.payload);
             }
         },
         setSort: (state, action) => {
             state.sort = action.payload;
         },
-        removeCategories: (state, action) => {
-            state.categories = state.categories.filter(category => category !== action.payload)
+        removeFilter: (state, action) => {
+            state.filters = state.filters.filter(filter => filter !== action.payload)
         },
         clearFilters: (state) => {
             state.searchTerm = '';
-            state.categories = [];
+            state.filters = [];
             state.sort = '';
         }
     }
 })
 
-export const { setSearchTerm, setCategories, setSort, removeCategories, clearFilters} = filterSlice.actions
+export const { setSearchTerm, setFilter, setSort, removeFilter, clearFilters} = filterSlice.actions
 export default filterSlice.reducer;

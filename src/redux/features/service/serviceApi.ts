@@ -1,16 +1,18 @@
-import { TQueryParams } from "../../../types/global";
 import { baseApi } from "../../api/baseApi";
 
 const serviceApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllServices: builder.query({
-      query: (args) => {
+      query: ({ searchTerm, filters, sort }) => {
         const params = new URLSearchParams();
-
-        if (args) {
-          args.forEach((item : TQueryParams) => {
-            params.append(item.name, item.value as string);
-          });
+        if (searchTerm) {
+          params.append("searchTerm", searchTerm);
+        }
+        if (filters) {
+          params.append("filters", filters);
+        }
+        if (sort) {
+          params.append("sort", sort.sort);
         }
         return {
           url: "/services",

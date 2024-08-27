@@ -21,8 +21,8 @@ const ServiceCard = ({ service } : {service: TService}) => {
             Duration: {service.duration} min
           </p>
         </div>
-        <div className="w-full mt-4 text-center">
-          <CustomButton2 text="Book Now" textColor="#111111" />
+        <div className="w-full mt-8 text-center">
+          <CustomButton2 text="Details" textColor="#111111" />
         </div>
       </Card>
     </>

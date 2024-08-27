@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <div className="bg-[#1a1c1cfd]">
       <Navbar
-        className="mx-auto container bg-transparent border-0 px-0  w-full py-3"
+        className="mx-auto container bg-transparent border-0 px-2  w-full py-3"
         placeholder=""
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
