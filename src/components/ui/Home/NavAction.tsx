@@ -1,33 +1,45 @@
 import { Link } from "react-router-dom";
 import CustomButton2 from "../Buttons/CustomButton2";
-import { useAppSelector } from "../../../redux/hooks";
-import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import {
+  logout,
+  selectCurrentUser,
+} from "../../../redux/features/auth/authSlice";
 
 const NavAction = () => {
-    const user = useAppSelector(selectCurrentUser)
-    return (
-        <div className="flex items-center gap-2">
-            {user ? (
+  const user = useAppSelector(selectCurrentUser);
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+  return (
+    <div className="flex items-center gap-2">
+      {user ? (
         <>
           <Link to="/dashboard">
-            <CustomButton2 text="Dashboard" bgColor="#FFFFFF" textColor="#111111" />
+            <CustomButton2
+              text="Dashboard"
+              bgColor="#FFFFFF"
+              textColor="#111111"
+            />
           </Link>
-          <Link to="/logout">
+          <div onClick={handleLogout}>
             <CustomButton2 text="Logout" textColor="#FFFFFF" />
-          </Link>
+          </div>
         </>
       ) : (
         <>
-          <Link to="/login">
-            <CustomButton2 text="Login" bgColor="#FFFFFF" textColor="#111111" />
-          </Link>
           <Link to="/signUp">
-            <CustomButton2 text="Sign Up" textColor="#FFFFFF" />
+            <CustomButton2 text="Sign Up" bgColor="#FFFFFF" textColor="#111111" />
+          </Link>
+          <Link to="/login">
+            <CustomButton2 text="Login" textColor="#FFFFFF" />
           </Link>
         </>
       )}
-        </div>
-    );
+    </div>
+  );
 };
 
 export default NavAction;

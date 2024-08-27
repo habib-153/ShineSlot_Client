@@ -5,6 +5,8 @@ import CustomInput from "../components/form/CustomInput";
 import { useSignUpMutation } from "../redux/features/auth/authApi";
 import { toast } from "sonner";
 import { FieldValues } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { createUserValidationSchema } from "../schema/authSchema";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -38,7 +40,7 @@ const Register = () => {
       </Link>
       <div className="max-w-[350px] mx-auto">
         <h2 className="text-3xl font-bold text-center">Sign Up</h2>
-        <CustomForm onSubmit={onSubmit}>
+        <CustomForm onSubmit={onSubmit} resolver={zodResolver(createUserValidationSchema)}>
           <CustomInput name="name" type="text" label="Name" />
           <CustomInput name="email" type="text" label="Email" />
           <CustomInput name="password" type="text" label="Password" />

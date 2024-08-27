@@ -34,7 +34,7 @@ const Reviews = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-2">
       <CustomTitle title="Reviews" />
       <div className="my-5">
         <Swiper
@@ -44,6 +44,18 @@ const Reviews = () => {
           pagination={{
             clickable: true,
           }}
+          breakpoints={{
+            0: {
+                slidesPerView: 1,
+            },
+            600: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+
+        }}
           modules={[FreeMode, Pagination]}
           className="mySwiper"
         >
@@ -89,24 +101,27 @@ const Reviews = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="flex flex-col md:flex-row md:flex-wrap gap-8 my-8">
-        <div className="">
+      <div className="flex flex-col lg:flex-row gap-8 my-8">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+          <div className="w-fit">
           <div className="flex items-center gap-1">
             <h2 className="text-4xl text-[#163196]">500</h2>
             <img src={img1} alt="carwash" className="size-6" />
           </div>
-          <p className="text-4xl text-[#1c3aa4]">
+          <p className="text-4xl w-fit text-[#1c3aa4]">
             Satisfied <br />
             Customers
           </p>
         </div>
         <figure>
           <img
-            className="max-w-[260px] bg-[#f0f0f0] rounded-2xl"
+            className="max-w-[260px] mx-auto bg-[#f0f0f0] rounded-2xl"
             src={img2}
             alt=""
           />
         </figure>
+        </div>
+        
         <div className="flex-1 relative">
           <div className="bg-[#ffffff] shadow-lg  rounded-lg  p-8 sm:p-5">
             <h2 className="text-4xl text-[#1c3aa4]">Leave A Review</h2>
