@@ -29,3 +29,11 @@ export type TResponse<T> = {
 };
 
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
+
+export type TCheckoutForm = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  paymentMethod: string;
+};

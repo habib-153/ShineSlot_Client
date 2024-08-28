@@ -29,7 +29,7 @@ const ServiceBookingForm = ({ service, slot }: ServiceBookingFormProps) => {
       vehicleBrand: data.vehicleBrand,
       vehicleModel: data.vehicleModel,
       manufacturingYear: parseInt(data.manufacturingYear),
-      registrationPlate: data.registration,
+      registrationPlate: data.registrationPlate,
     };
     dispatch(addBooking({ booking: bookingData, amount: service?.price }));
     navigate("/bookings");

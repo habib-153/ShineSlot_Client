@@ -19,8 +19,8 @@ const ServiceDetails = () => {
   const { id } = useParams();
   const user = useAppSelector(selectCurrentUser);
   const { data, isLoading } = useGetSingleServiceQuery(id);
-    const serviceData = data?.data;
-  const serviceId = data?._id;
+  const serviceData = data?.data;
+  const serviceId = serviceData?._id;
   const currentDate = startOfDay(new Date());
   const [dateRange, setDateRange] = useState<string[]>([
     format(currentDate, "yyyy-MM-dd"),
