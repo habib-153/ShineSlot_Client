@@ -10,12 +10,12 @@ type TInputProps = {
 
 const CustomInput = ({ type, name, label, disabled }: TInputProps) => {
   return (
-    <div >
+    <div>
       <Controller
         name={name}
         render={({ field, fieldState: {error} }) => (
           <Form.Item label={label}>
-            <Input disabled={disabled} {...field} type={type} id={name} />
+            <Input disabled={disabled}  {...field} type={type} id={name} />
             {error && <small style={{ color: "red" }}>{error.message}</small>}
           </Form.Item>
         )}

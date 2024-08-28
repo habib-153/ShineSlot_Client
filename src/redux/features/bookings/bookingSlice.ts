@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { TSlot } from "../../../types/service"
+import { TBooking } from "../../../types/service"
 import { RootState } from "../../store"
 
 type TBookingInitialState = {
-    slots: TSlot[]
+    booking: TBooking[]
     amount: number
 }
 
 const initialState: TBookingInitialState = {
-    slots: [],
+    booking: [],
     amount: 0
 }
 
@@ -17,17 +17,17 @@ const bookingSlice = createSlice({
     initialState,
     reducers: {
         addBooking: (state, action) => {
-            if(!state.slots.includes(action.payload)){
-                state.slots.push(action.payload);
-                state.amount += action.payload.service.price;
+            if(!state.booking.includes(action.payload.booking)){
+                state.booking.push(action.payload.booking);
+                state.amount += action.payload.amount;
             }
         },
         removeBooking: (state, action) => {
-            state.slots = state.slots.filter(slot => slot !== action.payload);
-            state.amount -= action.payload.service.price;
+            state.booking = state.booking.filter(item => item._id !== action.payload.id);
+            state.amount -= action.payload.amount;
         },
         clearBooking: (state) => {
-            state.slots = [];
+            state.booking = [];
             state.amount = 0;
         }
     }
@@ -35,4 +35,4 @@ const bookingSlice = createSlice({
 
 export const { addBooking, removeBooking, clearBooking } = bookingSlice.actions
 export default bookingSlice.reducer;
-export const totalSlots = (state: RootState) => state.bookings.slots.length;
+export const totalSlots = (state: RootState) => state.bookings.booking.length;

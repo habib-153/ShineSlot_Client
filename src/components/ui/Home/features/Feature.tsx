@@ -4,7 +4,7 @@ import CustomTitle from "../../customTitle/CustomTitle";
 import ServiceCard from "../../service/ServiceCard";
 
 const Feature = () => {
-  const { data } = useGetAllServicesQuery(undefined);
+  const { data } = useGetAllServicesQuery({undefined});
   const servicesData = data?.data;
 
   return (

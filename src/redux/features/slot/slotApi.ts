@@ -6,7 +6,7 @@ const slotApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllSlots: builder.query({
       query: ({ dateRange, serviceId, page, limit }) => {
-        console.log(page, limit, dateRange, serviceId);
+        //console.log(page, limit, dateRange, serviceId);
 
         const params = new URLSearchParams();
 
