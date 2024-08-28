@@ -17,7 +17,7 @@ const NavAction = () => {
     <div className="flex items-center gap-2">
       {user ? (
         <>
-          <Link to="/dashboard">
+          <Link to={`/${user.role}/dashboard`}>
             <CustomButton2
               text="Dashboard"
               bgColor="#FFFFFF"

@@ -7,6 +7,11 @@ import Register from "../pages/Register";
 import Service from "../pages/Service";
 import ServiceDetails from "../pages/ServiceDetails";
 import BookingPage from "../pages/BookingPage";
+import DashboardLayout from "../components/layouts/dashboard/DashboardLayout";
+import ProtectedRoute from "../components/layouts/ProtectedRoute";
+import { adminPaths } from "./adminRoutes";
+import { routeGenerator } from "../utils/routesGenerator";
+import { userPaths } from "./userRoutes";
 
 const router = createBrowserRouter([
   {
@@ -45,11 +50,14 @@ const router = createBrowserRouter([
     element: <Register />
   },
   {
-    path: "/dashboard",
-    element: <App></App>,
-    children: [
-      
-    ],
+    path: '/admin',
+    element: <ProtectedRoute role='admin'><DashboardLayout /></ProtectedRoute>,
+    children: routeGenerator(adminPaths),
+  },
+  {
+    path: '/user',
+    element: <ProtectedRoute role='user'><DashboardLayout /></ProtectedRoute>,
+    children: routeGenerator(userPaths),
   },
 ]);
 
