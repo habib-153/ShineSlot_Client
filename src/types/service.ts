@@ -8,3 +8,12 @@ export type TService = {
     createdAt: string
     updatedAt: string
 }
+
+export type TSlot = {
+  _id: string;
+  service: TService;
+  date: string;
+  startTime: string;
+  endTime: string;
+  isBooked: "available" | "booked" | "canceled";
+};

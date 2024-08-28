@@ -5,6 +5,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Service from "../pages/Service";
+import ServiceDetails from "../pages/ServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "services",
         element: <Service />
+      },
+      {
+        path: "services/:id",
+        element: <ServiceDetails />
       },
     ],
   },

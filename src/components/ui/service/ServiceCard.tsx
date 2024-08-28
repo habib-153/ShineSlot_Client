@@ -2,6 +2,7 @@ import { Card } from "antd";
 import CustomButton2 from "../Buttons/CustomButton2";
 import { MdOutlineDone } from "react-icons/md";
 import { TService } from "../../../types/service";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service } : {service: TService}) => {
   return (
@@ -22,7 +23,10 @@ const ServiceCard = ({ service } : {service: TService}) => {
           </p>
         </div>
         <div className="w-full mt-8 text-center">
+          <Link to={`/services/${service._id}`}>
           <CustomButton2 text="Details" textColor="#111111" />
+          </Link>
+          
         </div>
       </Card>
     </>
