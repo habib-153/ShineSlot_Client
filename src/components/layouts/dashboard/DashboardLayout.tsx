@@ -16,13 +16,13 @@ const DashboardLayout = () => {
     <Layout style={{ height: '100%' }}>
       <Sidebar />
       <Layout>
-        <Header>
+        <Header className="w-full text-end">
           <Button onClick={handleLogout}>Logout</Button>{' '}
         </Header>
-        <Content style={{ margin: '10px 10px 0' }}>
+        <Content style={{ margin: '24px 0px 0' }}>
           <div
             style={{
-              padding: 10,
+              padding: '24px 10px',
               minHeight: 360,
             }}
           >

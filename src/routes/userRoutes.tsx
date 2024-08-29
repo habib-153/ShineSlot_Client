@@ -1,4 +1,5 @@
 import PastBookings from "../pages/user/PastBookings";
+import UpcomingBookings from "../pages/user/UpcomingBookings";
 
 export const userPaths = [
     {
@@ -14,6 +15,6 @@ export const userPaths = [
     {
         name: "Upcoming Bookings",
         path: "upcoming-bookings",
-        element: "UpcomingBookings",
+        element: <UpcomingBookings />
     },  
 ]

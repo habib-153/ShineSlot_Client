@@ -17,9 +17,9 @@ const userRole = {
 const Sidebar = () => {
   const token = useAppSelector(useCurrentToken);
 
-  let user;
-  if (token) {
-    user = verifyToken(token);
+  let user
+  if(token){
+    user = verifyToken(token)
   }
 
   let sidebarItems;
@@ -52,7 +52,7 @@ const Sidebar = () => {
         }}
       >
         <Link to="/">
-          <h1 className="font-semibold">Shine Slot</h1>
+        <h1 className="font-semibold">Shine Slot</h1>
         </Link>
       </div>
       <Menu
