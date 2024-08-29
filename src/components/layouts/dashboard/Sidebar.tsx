@@ -50,7 +50,7 @@ const Sidebar = () => {
           alignItems: "center",
         }}
       >
-        <h1>PH Uni</h1>
+        <h1>Shine Slot</h1>
       </div>
       <Menu
         theme="dark"

@@ -20,8 +20,16 @@ export type TError = {
     status: number
 }
 
+type TMeta = {
+  limit: number;
+  page: number;
+  total: number;
+  totalPage: number;
+}
+
 export type TResponse<T> = {
   data?: T;
+  meta?: TMeta
   error?: TError;
   statusCode: number;
   success: boolean;
@@ -37,3 +45,15 @@ export type TCheckoutForm = {
   address: string;
   paymentMethod: string;
 };
+
+export type TUser = {
+  _id?: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+  phone: string;
+  address: string;
+  createdAt?: string;
+  updatedAt?: string;
+}

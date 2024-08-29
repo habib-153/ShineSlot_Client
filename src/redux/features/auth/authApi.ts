@@ -1,3 +1,4 @@
+import { TQueryParams, TResponseRedux, TUser } from '../../../types/global';
 import { baseApi } from '../../api/baseApi';
 
 const authApi = baseApi.injectEndpoints({
@@ -16,7 +17,41 @@ const authApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
+    getAllUsers: builder.query({
+      query:(args) =>{
+        const params = new URLSearchParams()
+
+        if (args) {
+          args.forEach((item: TQueryParams) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+
+        return{
+          url:'/users',
+          method:'GET',
+          params: params
+        }
+      },
+      transformResponse: (response: TResponseRedux<TUser[]>) => {
+        return {
+          data: response.data,
+          meta: response.meta,
+        };
+      },
+      providesTags:['User']
+    }),
+    updateUser: builder.mutation({
+      query: ({payload, id}) => {
+        return {
+          url: `/users/${id}`,
+          method: "PUT",
+          body: payload,
+        };
+      },
+      invalidatesTags: ["User"],
+    }),
   }),
 });
 
-export const {useLoginMutation, useSignUpMutation} = authApi
+export const {useLoginMutation, useSignUpMutation, useGetAllUsersQuery, useUpdateUserMutation} = authApi

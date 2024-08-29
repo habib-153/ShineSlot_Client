@@ -1,3 +1,5 @@
+import UserManagement from "../pages/admin/userManagement";
+
 export const adminPaths = [
     {
         name: "Dashboard",
@@ -17,6 +19,6 @@ export const adminPaths = [
     {
         name: "User Management",
         path: "user-management",
-        element: "UserManagement",
+        element: <UserManagement />,
     }, 
 ]
