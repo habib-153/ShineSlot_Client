@@ -1,3 +1,4 @@
+import AdminDashboard from "../pages/admin/AdminDashboard";
 import ServiceManagement from "../pages/admin/ServiceManagemnet";
 import SlotManagement from "../pages/admin/SlotManagement";
 import UserManagement from "../pages/admin/userManagement";
@@ -6,7 +7,7 @@ export const adminPaths = [
     {
         name: "Dashboard",
         path: "dashboard",
-        element: "Admin Dashboard",
+        element: <AdminDashboard />
     },
     {
         name: "Service Management",

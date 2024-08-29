@@ -16,7 +16,7 @@
     "@reduxjs/toolkit": "^2.2.6",
     "@types/react-redux": "^7.1.33",
     "antd": "^5.20.2",
-    "axios": "^1.7.2",
+    "axios": "^1.7.5",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.3.30",
     "jwt-decode": "^4.0.0",

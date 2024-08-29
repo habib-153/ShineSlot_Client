@@ -16,18 +16,17 @@ const bookingApi = baseApi.injectEndpoints({
       invalidatesTags: ["Booking"],
     }),
     getAllBookings: builder.query({
-      query: (queryData) => {
-        const params = queryData ? { ...queryData } : {};
+      query: () => {
 
         return {
           url: "/bookings",
           method: "GET",
-          params,
+          //params,
         };
       },
       transformResponse: (response: TResponseRedux<any>) => {
         return {
-          bookingData: response.data.result,
+          data: response.data,
           //meta: response.data.meta,
         };
       },
