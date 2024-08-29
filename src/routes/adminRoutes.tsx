@@ -1,3 +1,4 @@
+import ServiceManagement from "../pages/admin/ServiceManagemnet";
 import SlotManagement from "../pages/admin/SlotManagement";
 import UserManagement from "../pages/admin/userManagement";
 
@@ -10,7 +11,7 @@ export const adminPaths = [
     {
         name: "Service Management",
         path: "service-management",
-        element: "ServiceManagement",
+        element: <ServiceManagement />,
     },
     {
         name: "Slot Management",

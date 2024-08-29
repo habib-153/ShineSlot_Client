@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Swal from "sweetalert2";
 
-export const handleDeleteProduct = (id: string, deleteProduct: any) => {
+export const handleDeleteService = (id: string, deleteService: any) => {
   Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
@@ -12,7 +12,7 @@ export const handleDeleteProduct = (id: string, deleteProduct: any) => {
     confirmButtonText: "Yes, delete it!",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      const res = await deleteProduct(id);
+      const res = await deleteService(id);
       if (res?.data?.success) {
         Swal.fire({
           title: "Deleted!",

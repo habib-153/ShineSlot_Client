@@ -1,9 +1,11 @@
+import { TQueryParams, TResponseRedux } from "../../../types/global";
+import { TService } from "../../../types/service";
 import { baseApi } from "../../api/baseApi";
 
 const serviceApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllServices: builder.query({
-      query: ({ searchTerm, filters, sort }) => {
+      query: ({searchTerm, filters, sort}) => {
         const params = new URLSearchParams();
         if (searchTerm) {
           params.append("searchTerm", searchTerm);
@@ -18,6 +20,33 @@ const serviceApi = baseApi.injectEndpoints({
           url: "/services",
           method: "GET",
           params: params,
+        };
+      },
+      transformResponse: (response: TResponseRedux<TService[]>) => {
+        return {
+          data: response.data, 
+        };
+      },
+      providesTags: ["Service"],
+    }),
+    getAllServicesForAdmin: builder.query({
+      query: (args) => {
+        const params = new URLSearchParams();
+        if (args) {
+          args.forEach((item: TQueryParams) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+        // console.log(params)
+        return {
+          url: "/services",
+          method: "GET",
+          params: params,
+        };
+      },
+      transformResponse: (response: TResponseRedux<TService[]>) => {
+        return {
+          data: response.data, 
         };
       },
       providesTags: ["Service"],
@@ -45,7 +74,7 @@ const serviceApi = baseApi.injectEndpoints({
         return {
           url: `/services/${id}`,
           method: "PUT",
-          body: payload.data,
+          body: payload,
         };
       },
       invalidatesTags: ["Service"],
@@ -66,4 +95,5 @@ export const {
   useAddServiceMutation,
   useUpdateServiceMutation,
   useDeleteServiceMutation,
+  useGetAllServicesForAdminQuery
 } = serviceApi;

@@ -13,11 +13,7 @@ import ErrorPage from "./ErrorPage";
 
 const Service = () => {
   const { searchTerm, filters, sort } = useAppSelector((state) => state.filter);
-  const { data, isLoading, isError } = useGetAllServicesQuery({
-    searchTerm,
-    filters,
-    sort,
-  });
+  const { data, isLoading, isError } = useGetAllServicesQuery({searchTerm, filters, sort});
 
   const services = data?.data;
 
