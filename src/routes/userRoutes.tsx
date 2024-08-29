@@ -1,3 +1,5 @@
+import PastBookings from "../pages/user/PastBookings";
+
 export const userPaths = [
     {
         name: "Dashboard",
@@ -7,7 +9,7 @@ export const userPaths = [
     {
         name: "Past Bookings",
         path: "past-bookings",
-        element: "PastBookings",
+        element: <PastBookings />
     },
     {
         name: "Upcoming Bookings",

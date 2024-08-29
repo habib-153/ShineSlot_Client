@@ -40,7 +40,7 @@ const CheckoutForm = ({ submitHandler }: any) => {
             </label>
             <InputV2
               id="email" readonly={true}
-              type="email" defaultValue={user?.email}
+              type="email" defaultValue={(user as TU)?.email}
               register={{ ...register("email", { required: true }) }}
             />
             {errors.email && (

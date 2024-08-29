@@ -2,23 +2,28 @@ import { Button, Space, Table, TableColumnsType, TableProps } from "antd";
 import { TService } from "../../types/service";
 import { useState } from "react";
 import { TQueryParams } from "../../types/global";
-import CreateSlotModal from "../../components/ui/Dashboard/admin/CreateSlotModal";
-import { useDeleteServiceMutation, useGetAllServicesForAdminQuery } from "../../redux/features/service/serviceApi";
+import {
+  useDeleteServiceMutation,
+  useGetAllServicesForAdminQuery,
+} from "../../redux/features/service/serviceApi";
 import { handleDeleteService } from "../../utils/handleDeleteService";
 import UpdateService from "../../components/ui/Dashboard/admin/UpdateService";
+import CreateService from "../../components/ui/Dashboard/admin/CreateService";
 
 export type TTableData = Pick<
   TService,
   "_id" | "name" | "description" | "duration" | "price"
 >;
 const ServiceManagement = () => {
-    const [params, setParams] = useState<TQueryParams[]>([]);
-  const { data: serviceData, isFetching } = useGetAllServicesForAdminQuery(params);
-  const [deleteService] = useDeleteServiceMutation()
-
+  const [params, setParams] = useState<TQueryParams[]>([]);
+  const { data: serviceData, isFetching } =
+    useGetAllServicesForAdminQuery(params);
+  const [deleteService] = useDeleteServiceMutation();
+  
   const tableData: TTableData[] =
     serviceData?.data?.map(({ _id, name, description, duration, price }) => ({
-      _id, key: _id,
+      _id,
+      key: _id,
       name,
       description,
       duration,
@@ -37,8 +42,8 @@ const ServiceManagement = () => {
       dataIndex: "price",
       render: (price: number) => `${price.toFixed(2)} BDT`,
       filters: [
-        { text: "High to Low", value: '-price' },
-        { text: "Low to High", value: 'price' },
+        { text: "High to Low", value: "-price" },
+        { text: "Low to High", value: "price" },
       ],
     },
     {
@@ -59,8 +64,13 @@ const ServiceManagement = () => {
         // console.log(item)
         return (
           <Space>
-            <UpdateService item={item}/>
-            <Button danger onClick={() => handleDeleteService(item._id,deleteService)}>Delete</Button>
+            <UpdateService item={item} />
+            <Button
+              danger
+              onClick={() => handleDeleteService(item._id, deleteService)}
+            >
+              Delete
+            </Button>
           </Space>
         );
       },
@@ -79,13 +89,13 @@ const ServiceManagement = () => {
       filters.price?.forEach((item) =>
         queryParams.push({ name: "sort", value: item })
       );
-       setParams(queryParams);
+      setParams(queryParams);
     }
   };
 
   return (
     <div>
-      <CreateSlotModal />
+      <CreateService />
       <div className="mt-4">
         <Table
           loading={isFetching}

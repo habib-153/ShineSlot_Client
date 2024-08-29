@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "../../../redux/api/baseApi";
+import { TResponseRedux } from "../../../types/global";
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +15,35 @@ const bookingApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["Booking"],
     }),
+    getAllBookings: builder.query({
+      query: (queryData) => {
+        const params = queryData ? { ...queryData } : {};
+
+        return {
+          url: "/bookings",
+          method: "GET",
+          params,
+        };
+      },
+      transformResponse: (response: TResponseRedux<any>) => {
+        return {
+          bookingData: response.data.result,
+          //meta: response.data.meta,
+        };
+      },
+      providesTags: ["Booking"],
+    }),
+    getMyBookings: builder.query({
+      query: () => {
+        return {
+          url: "/my-bookings",
+          method: "GET",
+        };
+      },
+      transformResponse: (response: TResponseRedux<any>) => response.data,
+      providesTags: ["Booking"],
+    }),
   }),
 });
 
-export const { useAddBookingsMutation } = bookingApi;
+export const { useAddBookingsMutation, useGetAllBookingsQuery, useGetMyBookingsQuery } = bookingApi;

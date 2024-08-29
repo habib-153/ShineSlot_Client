@@ -1,4 +1,5 @@
 import { TVehicleTypes } from "../constant"
+import { TUser } from "./global"
 
 export type TService = {
     _id: string
@@ -13,14 +14,19 @@ export type TService = {
 
 export type TBooking = {
   _id?: string
-  customer?: string
-  serviceId: string
-  slotId: string
+  customer?: TUser
+  serviceId: TService
+  slotId: TSlot
   vehicleType: TVehicleTypes
   vehicleModel: string
   vehicleBrand: string
   manufacturingYear: number
   registrationPlate: string
+  transactionId?: string
+  address?: string
+  phone?: string
+  paymentStatus?: string
+  price?: number
   createdAt?: string
   updatedAt?: string
 }

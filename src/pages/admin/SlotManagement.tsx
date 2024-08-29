@@ -6,7 +6,7 @@ import { useGetAllSlotsForAdminQuery, useUpdateSlotStatusMutation } from "../../
 import CreateSlotModal from "../../components/ui/Dashboard/admin/CreateSlotModal";
 import { toast } from "sonner";
 
-export type TTableData = Pick<
+type TTableData = Pick<
   TSlot,
   "service" | "startTime" | "endTime" | "date" | "isBooked"
 >;

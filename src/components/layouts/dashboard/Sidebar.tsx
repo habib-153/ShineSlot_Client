@@ -5,6 +5,7 @@ import { verifyToken } from "../../../utils/verifyToken";
 import { sidebarItemsGenerator } from "../../../utils/sidebarItemGenerator";
 import { adminPaths } from "../../../routes/adminRoutes";
 import { userPaths } from "../../../routes/userRoutes";
+import { Link } from "react-router-dom";
 
 const { Sider } = Layout;
 
@@ -16,9 +17,9 @@ const userRole = {
 const Sidebar = () => {
   const token = useAppSelector(useCurrentToken);
 
-  let user
-  if(token){
-    user = verifyToken(token)
+  let user;
+  if (token) {
+    user = verifyToken(token);
   }
 
   let sidebarItems;
@@ -50,7 +51,9 @@ const Sidebar = () => {
           alignItems: "center",
         }}
       >
-        <h1>Shine Slot</h1>
+        <Link to="/">
+          <h1 className="font-semibold">Shine Slot</h1>
+        </Link>
       </div>
       <Menu
         theme="dark"
