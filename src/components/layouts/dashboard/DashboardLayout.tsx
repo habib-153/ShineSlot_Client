@@ -19,10 +19,10 @@ const DashboardLayout = () => {
         <Header>
           <Button onClick={handleLogout}>Logout</Button>{' '}
         </Header>
-        <Content style={{ margin: '24px 16px 0' }}>
+        <Content style={{ margin: '10px 10px 0' }}>
           <div
             style={{
-              padding: 24,
+              padding: 10,
               minHeight: 360,
             }}
           >

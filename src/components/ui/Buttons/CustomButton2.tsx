@@ -4,11 +4,12 @@ type CustomButtonProps = {
   text: string;
   bgColor?: string;
   textColor: string;
+  onClick?: () => void;
 }
 
-const CustomButton2 = ({ text , bgColor, textColor }: CustomButtonProps) => {
+const CustomButton2 = ({ text , bgColor, textColor, onClick }: CustomButtonProps) => {
   return (
-    <Button
+    <Button onClick={onClick}
       onPointerEnterCapture={() => {}}
       onPointerLeaveCapture={() => {}}
       placeholder=""
