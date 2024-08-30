@@ -85,15 +85,6 @@ const CheckoutForm = ({ submitHandler }: any) => {
           </p>
           <div className="flex justify-center space-x-4">
             <Radio
-              //   name="paymentMethod"
-              label="Cash on Delivery"
-              value="COD"
-              crossOrigin={undefined}
-              onPointerEnterCapture={() => {}}
-              onPointerLeaveCapture={() => {}}
-              {...register("paymentMethod", { required: true })}
-            />
-            <Radio
               crossOrigin={undefined}
               onPointerEnterCapture={() => {}}
               onPointerLeaveCapture={() => {}}
@@ -113,7 +104,7 @@ const CheckoutForm = ({ submitHandler }: any) => {
             type="submit"
             className="py-2 px-4 bg-black hover:bg-blue-gray-800 text-white my-3 rounded"
           >
-            Submit
+            Pay Now
           </button>
         </div>
       </form>
