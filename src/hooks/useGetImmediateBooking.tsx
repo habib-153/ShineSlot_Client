@@ -46,7 +46,7 @@ const useGetImmediateBooking = () => {
   // console.log(immediateBooking?.customer)
   if (user) {
     if (immediateBooking?.customer?.email !== user.email) {
-        console.log('hello')
+        //console.log('hello')
       return {
         immediateBooking: null,
       };
