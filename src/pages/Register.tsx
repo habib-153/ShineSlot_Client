@@ -14,7 +14,7 @@ const Register = () => {
   const [signUp] = useSignUpMutation();
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
+   // console.log(data);
     const toastId = toast.loading("Signing Up...");
     const userInfo = {
       ...data,

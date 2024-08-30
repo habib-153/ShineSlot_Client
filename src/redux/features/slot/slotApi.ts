@@ -10,14 +10,14 @@ const slotApi = baseApi.injectEndpoints({
 
         if (dateRange && dateRange.length > 0) {
           const date = dateRange.join(",");
-          params.append("date", date);
+          params.append("searchDate", date);
         }
-
         if (serviceId) params.append("serviceId", serviceId);
 
         return {
-          url: `/slots/availability?${params.toString()}`,
+          url: `/slots/availability`,
           method: "GET",
+          params: params,
         };
       },
       transformResponse: (response: TResponseRedux<TSlot[]>) => {

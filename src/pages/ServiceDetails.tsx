@@ -31,7 +31,7 @@ const ServiceDetails = () => {
 
   const handleDateChange = (date: any) => {
     // console.log(date)
-    const formattedDate = formatDate(date.toDate());
+    const formattedDate = formatDate(date?.toDate());
     setDateRange((prevDates) => {
       if (
         prevDates.length === 1 &&
@@ -130,8 +130,7 @@ const ServiceDetails = () => {
                   type={isSlotSelected(singleSlot) ? "primary" : "default"}
                   onClick={() => handleSlotSelection(singleSlot)}
                   disabled={
-                    singleSlot?.isBooked !== "available" ||
-                    user?.role === "admin"
+                    singleSlot?.isBooked !== "available"
                   }
                 >
                   {`${singleSlot?.startTime}-${singleSlot?.endTime}`}

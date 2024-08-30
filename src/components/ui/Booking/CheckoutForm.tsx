@@ -14,7 +14,7 @@ const CheckoutForm = ({ submitHandler }: any) => {
   } = useForm<TCheckoutForm>();
   
   const user = useAppSelector(selectCurrentUser);
-  console.log(user)
+  //console.log(user)
 
   return (
     <div className="">
