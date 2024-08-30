@@ -43,10 +43,10 @@ const useGetImmediateBooking = () => {
   }
 
   // Add a nullish check for loadedUser
-//   console.log(immediateBooking?.customer)
+  // console.log(immediateBooking?.customer)
   if (user) {
-    if (!immediateBooking?.customer || user===null) {
-        //console.log('hello')
+    if (immediateBooking?.customer?.email !== user.email) {
+        console.log('hello')
       return {
         immediateBooking: null,
       };
