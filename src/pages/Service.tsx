@@ -1,3 +1,4 @@
+import { useState } from "react";
 import CustomTitle from "../components/ui/customTitle/CustomTitle";
 import Loading from "../components/ui/global/Loading";
 import ClearFilter from "../components/ui/service/ClearFilter";
@@ -10,17 +11,30 @@ import { useGetAllServicesQuery } from "../redux/features/service/serviceApi";
 import { useAppSelector } from "../redux/hooks";
 import { TService } from "../types/service";
 import ErrorPage from "./ErrorPage";
+import ServiceComparison from "../components/ui/service/ServiceComparison";
 
 const Service = () => {
   const { searchTerm, filters, sort } = useAppSelector((state) => state.filter);
   const { data, isLoading, isError } = useGetAllServicesQuery({searchTerm, filters, sort});
+
+  const [selectedServices, setSelectedServices] = useState<TService[]>([]);
+
+  const handleSelectService = (service: TService) => {
+    setSelectedServices((prevSelected) => {
+      if (prevSelected.includes(service)) {
+        return prevSelected.filter((s) => s !== service);
+      } else {
+        return [...prevSelected, service];
+      }
+    });
+  };
 
   const services = data?.data;
 
   if (isLoading) return <Loading />;
   if (isError) return <ErrorPage />;
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-1">
       <ServiceBanner />
       <div>
         <CustomTitle title="Our Services" />
@@ -38,10 +52,15 @@ const Service = () => {
           <div className="hidden md:block">
             <Search />
           </div>
+          
         </div>
-        <div className="grid my-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+        <div className="w-full text-end mt-3">
+          <ServiceComparison selectedServices={selectedServices} />
+        </div>
+        <div className="grid my-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
           {services?.map((service: TService, idx: number) => (
-            <ServiceCard key={idx} service={service} />
+            <ServiceCard compare={true} onSelect={() => handleSelectService(service)}
+            isSelected={selectedServices.includes(service)} key={idx} service={service} />
           ))}
         </div>
       </div>

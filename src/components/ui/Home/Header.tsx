@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 import { Collapse, IconButton, Navbar } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import NavAction from "./NavAction";
+import useGetImmediateBooking from "../../../hooks/useGetImmediateBooking";
+import NavTimer from "../global/NavbarTimer";
+import { useAppSelector } from "../../../redux/hooks";
+import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -30,6 +34,9 @@ function NavList() {
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
+  const user = useAppSelector(selectCurrentUser)
+
+  const { immediateBooking, expiryTimestamp } = useGetImmediateBooking();
 
   useEffect(() => {
     const handleWindowResize = () =>
@@ -72,12 +79,22 @@ const Header = () => {
             )}
           </IconButton>
           <div className="lg:block hidden">
+            <div className="flex items-center gap-2">
+              {user && immediateBooking && (
+              <div className="lg:mr-7 xl:mr-20">
+                <NavTimer
+                  expiryTimestamp={expiryTimestamp}
+                  immediateBooking={immediateBooking}
+                />
+              </div>
+            )}
             <NavAction />
+            </div>
           </div>
         </div>
         <Collapse open={openNav}>
           <NavList />
-          <NavAction/>
+          <NavAction />
         </Collapse>
       </Navbar>
     </div>

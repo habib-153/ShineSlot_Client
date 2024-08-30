@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { selectCurrentUser, TUser } from "../../../redux/features/auth/authSlice";
 import { useAppSelector } from "../../../redux/hooks";
 import { motion } from "framer-motion";
@@ -33,7 +34,7 @@ const Profile = () => {
   };
 
   const handleOk = async(data : FieldValues) => {
-    const {_id, image, ...payload} = data;
+    const {_id, image, password, ...payload} = data;
     const imageFile = { image: image };
     const res = await axios.post(image_hosting_api, imageFile, {
       headers: {
@@ -108,6 +109,7 @@ const Profile = () => {
         <CustomForm onSubmit={handleOk} defaultValues={userData} >
           <CustomInput name="name" type="text" label="Name" />
           <CustomInput name="email" type="text" label="Email" />
+          <CustomInput name="phone" type="text" label="Phone Number" />
           <Controller
                 name="image"
                 render={({ field: { onChange, value, ...field } }) => (
@@ -121,8 +123,6 @@ const Profile = () => {
                   </Form.Item>
                 )}
               />
-          <CustomInput name="password" type="text" label="Password" />
-          <CustomInput name="phone" type="text" label="Phone Number" />
           <CustomInput name="address" type="text" label="Address" />
           <div className="w-full text-center">
             <Button htmlType="submit">Submit</Button>
