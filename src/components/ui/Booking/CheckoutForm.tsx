@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { InputV2 } from "../../form/InputV2";
 import { TCheckoutForm } from "../../../types/global";
 import { useAppSelector } from "../../../redux/hooks";
-import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
+import { selectCurrentUser, TUser } from "../../../redux/features/auth/authSlice";
 
 const CheckoutForm = ({ submitHandler }: any) => {
   const {
@@ -40,7 +40,7 @@ const CheckoutForm = ({ submitHandler }: any) => {
             </label>
             <InputV2
               id="email" readonly={true}
-              type="email" defaultValue={(user as TU)?.email}
+              type="email" defaultValue={(user as TUser)?.email}
               register={{ ...register("email", { required: true }) }}
             />
             {errors.email && (

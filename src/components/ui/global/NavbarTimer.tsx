@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Col, Row, Typography } from "antd";
 import { useEffect } from "react";
 import { useTimer } from "react-timer-hook";

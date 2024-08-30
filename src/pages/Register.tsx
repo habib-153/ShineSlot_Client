@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { FieldValues } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { createUserValidationSchema } from "../schema/authSchema";
+import { TError } from "../types/global";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Register = () => {
       const res = await signUp(userInfo)
       
       if (res?.error) {
-        toast.error(res?.error?.data?.message, { id: toastId, duration: 2000 });
+        toast.error((res?.error as TError)?.data?.message, { id: toastId, duration: 2000 });
       }
       else{
         toast.success(res?.data?.message, { id: toastId, duration: 2000 });

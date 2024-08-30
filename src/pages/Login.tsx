@@ -9,6 +9,7 @@ import { FieldValues } from "react-hook-form";
 import { useAppDispatch } from "../redux/hooks";
 import { verifyToken } from "../utils/verifyToken";
 import { setUser } from "../redux/features/auth/authSlice";
+import { TError } from "../types/global";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Login = () => {
       const res = await login(data);
       
       if (res?.error) {
-        toast.error(res?.error?.data?.message, { id: toastId, duration: 2000 });
+        toast.error((res?.error as TError)?.data?.message, { id: toastId, duration: 2000 });
       } else {
         const user = verifyToken(res?.data?.token)
         dispatch(setUser({user: user, token: res?.data?.token}))

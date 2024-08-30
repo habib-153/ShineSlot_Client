@@ -57,7 +57,7 @@ const PastBookings = () => {
     {
       title: "Action",
       key: "x",
-      render: (item) => {
+      render: () => {
         // console.log(item)
         return <Button>Details</Button>;
       },
