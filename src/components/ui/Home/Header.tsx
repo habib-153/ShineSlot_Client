@@ -11,7 +11,6 @@ import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Services", path: "/services" },
-  { name: "Bookings", path: "/services/bookings" },
   { name: "About Us", path: "/about-us" },
 ];
 
@@ -95,6 +94,14 @@ const Header = () => {
         <Collapse open={openNav}>
           <NavList />
           <NavAction />
+          {user && immediateBooking && (
+              <div className="lg:mr-7 xl:mr-20">
+                <NavTimer
+                  expiryTimestamp={expiryTimestamp}
+                  immediateBooking={immediateBooking}
+                />
+              </div>
+            )}
         </Collapse>
       </Navbar>
     </div>

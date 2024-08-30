@@ -27,7 +27,7 @@ const ServiceComparison = ({
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-  console.log(Math.min(600, window.innerWidth - 100))
+  
   const chartData = selectedServices.map((service: TService) => ({
     name: service.name,
     Price: service.price,

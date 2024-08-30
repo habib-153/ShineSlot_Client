@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CustomTitle from "../../customTitle/CustomTitle";
 import ReviewCard from "./ReviewCard";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -46,16 +47,15 @@ const Reviews = () => {
           }}
           breakpoints={{
             0: {
-                slidesPerView: 1,
+              slidesPerView: 1,
             },
             600: {
-                slidesPerView: 2,
+              slidesPerView: 2,
             },
             1024: {
-                slidesPerView: 3,
+              slidesPerView: 3,
             },
-
-        }}
+          }}
           modules={[FreeMode, Pagination]}
           className="mySwiper"
         >
@@ -104,24 +104,24 @@ const Reviews = () => {
       <div className="flex flex-col lg:flex-row gap-8 my-8">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
           <div className="w-fit">
-          <div className="flex items-center gap-1">
-            <h2 className="text-4xl text-[#163196]">500</h2>
-            <img src={img1} alt="carwash" className="size-6" />
+            <div className="flex items-center gap-1">
+              <h2 className="text-4xl text-[#163196]">500</h2>
+              <img src={img1} alt="carwash" className="size-6" />
+            </div>
+            <p className="text-4xl w-fit text-[#1c3aa4]">
+              Satisfied <br />
+              Customers
+            </p>
           </div>
-          <p className="text-4xl w-fit text-[#1c3aa4]">
-            Satisfied <br />
-            Customers
-          </p>
+          <figure>
+            <img
+              className="max-w-[260px] mx-auto bg-[#f0f0f0] rounded-2xl"
+              src={img2}
+              alt=""
+            />
+          </figure>
         </div>
-        <figure>
-          <img
-            className="max-w-[260px] mx-auto bg-[#f0f0f0] rounded-2xl"
-            src={img2}
-            alt=""
-          />
-        </figure>
-        </div>
-        
+
         <div className="flex-1 relative">
           <div className="bg-[#ffffff] shadow-lg  rounded-lg  p-8 sm:p-5">
             <h2 className="text-4xl text-[#1c3aa4]">Leave A Review</h2>
@@ -182,9 +182,12 @@ const Reviews = () => {
         open={isOpen}
         onOk={handleOk}
         onCancel={handleOk}
-        width='90%'
-        style={{maxWidth: '700px'}}
+        width="90%"
+        style={{ maxWidth: "700px" }}
         footer={[
+          <Link to="/reviews">
+            <Button className="mr-3">See All Reviews</Button>
+          </Link>,
           <Button key="ok" type="primary" onClick={handleOk}>
             OK
           </Button>,
@@ -195,24 +198,24 @@ const Reviews = () => {
           <p className="mt-3">Your review has been submitted successfully!</p>
           <div>
             <h3 className="mt-4 font-semibold text-xl">Previous Reviews</h3>
-              <div className="flex flex-col md:flex-row gap-2 items-center justify-center my-2">
-                <ReviewCard
-                  name="John Doe"
-                  date="12/12/2021"
-                  rating={4}
-                  comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates."
-                />
-                <ReviewCard
-                  name="John Doe"
-                  date="12/12/2021"
-                  rating={5}
-                  comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates."
-                />
-              </div>
-              <div className="max-w-[600px] mx-auto">
-             <TotalRatings />   
-              </div> 
+            <div className="flex flex-col md:flex-row gap-2 items-center justify-center my-2">
+              <ReviewCard
+                name="John Doe"
+                date="12/12/2021"
+                rating={4}
+                comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates."
+              />
+              <ReviewCard
+                name="John Doe"
+                date="12/12/2021"
+                rating={5}
+                comment="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates."
+              />
             </div>
+            <div className="max-w-[600px] mx-auto">
+              <TotalRatings />
+            </div>
+          </div>
         </div>
       </Modal>
     </div>

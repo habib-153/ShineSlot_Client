@@ -3,7 +3,7 @@ import { TReviewProps } from "../../../../types/review";
 
 const ReviewCard = ({ name, comment, date, rating }: TReviewProps) => {
   return (
-    <div className="p-6 rounded-tl-2xl rounded-br-2xl rounded-bl-md rounded-tr-md border-[#163196] border-[1px] shadow-lg max-w-[350px]">
+    <div className="p-6 mb-3 rounded-tl-2xl rounded-br-2xl rounded-bl-md rounded-tr-md border-[#163196] border-[1px] shadow-lg max-w-[350px]">
       <div className="flex items-center gap-4 mb-2">
         <div>
           <div className="font-bold text-base">{name}</div>

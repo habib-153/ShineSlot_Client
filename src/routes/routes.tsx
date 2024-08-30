@@ -12,6 +12,8 @@ import ProtectedRoute from "../components/layouts/ProtectedRoute";
 import { adminPaths } from "./adminRoutes";
 import { routeGenerator } from "../utils/routesGenerator";
 import { userPaths } from "./userRoutes";
+import AboutUs from "../pages/AboutUs";
+import ReviewPage from "../pages/ReviewPage";
 
 const router = createBrowserRouter([
   {
@@ -25,15 +27,19 @@ const router = createBrowserRouter([
       },
       {
         path: "about-us",
-        element: 'About Us',
+        element: <AboutUs />,
       },
       {
         path: "services",
         element: <Service />
       },
       {
+        path: "reviews",
+        element: <ReviewPage />
+      },
+      {
         path: "services/:id",
-        element: <ServiceDetails />
+        element: <ProtectedRoute role="user"><ServiceDetails /></ProtectedRoute>
       },
       {
         path: "/bookings",

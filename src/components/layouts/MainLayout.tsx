@@ -1,6 +1,7 @@
 import Header from "../ui/Home/Header";
 import Footer from "../ui/Home/Footer";
 import { Outlet } from "react-router-dom";
+import Scroll from "../ui/global/Scroll";
 
 const MainLayout = () => {
   return (
@@ -8,6 +9,7 @@ const MainLayout = () => {
       <Header />
       <main className="">
           <Outlet />
+          <Scroll />
       </main>
       <Footer />
     </div>
