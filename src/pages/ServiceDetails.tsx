@@ -52,11 +52,10 @@ const ServiceDetails = () => {
     (dateRange.length > 1 && isSameDay(date.toDate(), new Date(dateRange[1])));
 
   const handleSlotSelection = (slot: TSlot) => {
-    setSelectedSlot(slot)
+    setSelectedSlot(slot);
   };
 
-  const isSlotSelected = (slot: TSlot) =>
-    selectedSlot?._id === slot._id;
+  const isSlotSelected = (slot: TSlot) => selectedSlot?._id === slot._id;
 
   const queryObj = useMemo(
     () => ({ dateRange, serviceId }),
@@ -82,70 +81,70 @@ const ServiceDetails = () => {
 
   return (
     <div className="container mx-auto">
-        <div className=" mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-2 xl:px-0">
-      <Card className="my-10">
-        <ServiceInfo data={data?.data} />
-      </Card>
-      <SlotList
-        title="Today's Available Slots:"
-        slots={currentDateServiceSlots}
-        handleSlotSelection={handleSlotSelection}
-        isSlotSelected={isSlotSelected}
-        user={user}
-      />
-      <Card className="my-10">
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-1 text-2xl font-bold">
-            <FaCheckToSlot className="" />
-            <span>Upcoming Available Slots:</span>
-          </div>
-          <div className="mt-7">
-            <DatePicker
-              onChange={handleDateChange}
-              disabledDate={disabledDate}
-              className="w-full"
-            />
-            {dateRange.length > 1 && (
-              <div className="mt-5 text-xl font-semibold text-center">
-                <div className="flex items-center justify-center">
-                  <h1>Selected Date: {dateRange[1]}</h1>
-                  <Button
-                    type="link"
-                    onClick={removeSelectedDate}
-                    className="ml-2 text-primary text-xl"
-                  >
-                    <FaTimesCircle />
-                  </Button>
-                </div>
-              </div>
-            )}
-          </div>
-          <List
-            className="mt-4"
-            grid={{ gutter: 12 }}
-            dataSource={otherDateServiceSlots}
-            renderItem={(singleSlot: TSlot) => (
-              <List.Item>
-                <Button
-                  type={isSlotSelected(singleSlot) ? "primary" : "default"}
-                  onClick={() => handleSlotSelection(singleSlot)}
-                  disabled={
-                    singleSlot?.isBooked !== "available"
-                  }
-                >
-                  {`${singleSlot?.startTime}-${singleSlot?.endTime}`}
-                </Button>
-              </List.Item>
-            )}
+      <div className=" mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-2 xl:px-0">
+        <Card className="my-10">
+          <ServiceInfo data={data?.data} />
+        </Card>
+        <div>
+          <SlotList
+            title="Today's Available Slots:"
+            slots={currentDateServiceSlots}
+            handleSlotSelection={handleSlotSelection}
+            isSlotSelected={isSlotSelected}
+            user={user}
           />
+          <Card className="my-10">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1 text-2xl font-bold">
+                <FaCheckToSlot className="" />
+                <span>Upcoming Available Slots:</span>
+              </div>
+              <div className="mt-7">
+                <DatePicker
+                  onChange={handleDateChange}
+                  disabledDate={disabledDate}
+                  className="w-full"
+                />
+                {dateRange.length > 1 && (
+                  <div className="mt-5 text-xl font-semibold text-center">
+                    <div className="flex items-center justify-center">
+                      <h1>Selected Date: {dateRange[1]}</h1>
+                      <Button
+                        type="link"
+                        onClick={removeSelectedDate}
+                        className="ml-2 text-primary text-xl"
+                      >
+                        <FaTimesCircle />
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <List
+                className="mt-4"
+                grid={{ gutter: 12 }}
+                dataSource={otherDateServiceSlots}
+                renderItem={(singleSlot: TSlot) => (
+                  <List.Item>
+                    <Button
+                      type={isSlotSelected(singleSlot) ? "primary" : "default"}
+                      onClick={() => handleSlotSelection(singleSlot)}
+                      disabled={singleSlot?.isBooked !== "available"}
+                    >
+                      {`${singleSlot?.startTime}-${singleSlot?.endTime}`}
+                    </Button>
+                  </List.Item>
+                )}
+              />
+            </div>
+          </Card>
         </div>
-      </Card>
+        <div className="my-10">
+        <ServiceBookingForm service={serviceData} slot={selectedSlot} />
+      </div>
+      </div>
+      
     </div>
-    <div className="w-full">
-        <ServiceBookingForm service={serviceData} slot={selectedSlot}/>
-    </div>
-    </div>
-    
   );
 };
 

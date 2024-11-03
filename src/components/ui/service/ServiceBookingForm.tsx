@@ -35,7 +35,7 @@ const ServiceBookingForm = ({ service, slot }: ServiceBookingFormProps) => {
     navigate("/bookings");
   };
   return (
-    <div className="max-w-[400px] mx-auto border p-5 rounded-xl mb-2">
+    <div className="mx-auto border p-5 rounded-xl mb-2">
       <h2 className="text-2xl font-semibold my-2 text-center">
         Book This Service For Your Car
       </h2>

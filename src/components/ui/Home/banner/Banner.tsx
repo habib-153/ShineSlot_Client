@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <div
       style={{ backgroundImage: `url(${bg})` }}
-      className="md:h-[600px] mx-auto bg-no-repeat bg-cover mix-blend-overlay flex items-center bg-blend-overlay bg-black/30"
+      className="md:h-[75vh] mx-auto bg-no-repeat bg-cover mix-blend-overlay flex items-center bg-blend-overlay bg-black/30"
     >
       <div className="md:space-y-3 container mx-auto text-center w-full text-[#FFFFFF] space-y-2 py-8">
         <h1 className="md:text-6xl text-xl font-semibold">
