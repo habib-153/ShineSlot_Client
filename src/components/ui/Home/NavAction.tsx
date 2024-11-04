@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-import CustomButton2 from "../Buttons/CustomButton2";
+import { Dropdown, Menu, Avatar } from "antd";
+import {
+  UserOutlined,
+  LogoutOutlined,
+  DashboardOutlined,
+} from "@ant-design/icons";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import {
   logout,
   selectCurrentUser,
 } from "../../../redux/features/auth/authSlice";
+import CustomButton2 from "../Buttons/CustomButton2";
 
 const NavAction = () => {
   const user = useAppSelector(selectCurrentUser);
@@ -13,26 +19,42 @@ const NavAction = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="profile" icon={<UserOutlined />}>
+        Logged In as <br /> <strong>{user?.email}</strong>
+      </Menu.Item>
+      <Menu.Item key="dashboard" icon={<DashboardOutlined />}>
+        <Link to={`/${user?.role}/dashboard`}>Dashboard</Link>
+      </Menu.Item>
+      <Menu.Item key="logout" icon={<LogoutOutlined />} onClick={handleLogout}>
+        Logout
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
     <div className="flex items-center gap-2">
       {user ? (
-        <>
-          <Link to={`/${user.role}/dashboard`}>
-            <CustomButton2
-              text="Dashboard"
-              bgColor="#FFFFFF"
-              textColor="#111111"
-            />
-          </Link>
-          <div onClick={handleLogout}>
-            <CustomButton2 text="Logout" textColor="#FFFFFF" />
-          </div>
-        </>
+        <Dropdown overlay={menu} trigger={["click"]}>
+          <Avatar
+            size="large"
+            icon={<UserOutlined />}
+            className="cursor-pointer"
+          />
+        </Dropdown>
       ) : (
         <>
-          <Link to="/signUp">
-            <CustomButton2 text="Sign Up" bgColor="#FFFFFF" textColor="#111111" />
-          </Link>
+          <div className="hidden md:block">
+            <Link to="/signUp">
+              <CustomButton2
+                text="Start For Free"
+                bgColor="#FFFFFF"
+                textColor="#111111"
+              />
+            </Link>
+          </div>
           <Link to="/login">
             <CustomButton2 text="Login" textColor="#FFFFFF" />
           </Link>

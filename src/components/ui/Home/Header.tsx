@@ -16,7 +16,7 @@ const navLinks = [
 
 function NavList() {
   return (
-    <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center justify-center lg:gap-6">
       {navLinks.map((link) => (
         <li key={link.name} className="p-1 font-medium">
           <NavLink
@@ -33,7 +33,7 @@ function NavList() {
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
-  const user = useAppSelector(selectCurrentUser)
+  const user = useAppSelector(selectCurrentUser);
 
   const { immediateBooking, expiryTimestamp } = useGetImmediateBooking();
 
@@ -59,49 +59,51 @@ const Header = () => {
           >
             <p>Shine Slot</p>
           </NavLink>
-          <div className="hidden lg:block">
+          <div className="hidden lg:block flex-1">
             <NavList />
           </div>
-          <IconButton
-            variant="text"
-            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-            ripple={false}
-            onClick={() => setOpenNav(!openNav)}
-            placeholder=""
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            {openNav ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
-          </IconButton>
+
           <div className="lg:block hidden">
             <div className="flex items-center gap-2">
               {user && immediateBooking && (
-              <div className="lg:mr-7 xl:mr-20">
-                <NavTimer
-                  expiryTimestamp={expiryTimestamp}
-                  immediateBooking={immediateBooking}
-                />
-              </div>
-            )}
-            <NavAction />
+                <div className="lg:mr-7 xl:mr-20">
+                  <NavTimer
+                    expiryTimestamp={expiryTimestamp}
+                    immediateBooking={immediateBooking}
+                  />
+                </div>
+              )}
             </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <NavAction />
+            <IconButton
+              variant="text"
+              className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+              ripple={false}
+              onClick={() => setOpenNav(!openNav)}
+              placeholder=""
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
+              {openNav ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
+            </IconButton>
           </div>
         </div>
         <Collapse open={openNav}>
           <NavList />
-          <NavAction />
           {user && immediateBooking && (
-              <div className="lg:mr-7 xl:mr-20">
-                <NavTimer
-                  expiryTimestamp={expiryTimestamp}
-                  immediateBooking={immediateBooking}
-                />
-              </div>
-            )}
+            <div className="lg:mr-7 xl:mr-20">
+              <NavTimer
+                expiryTimestamp={expiryTimestamp}
+                immediateBooking={immediateBooking}
+              />
+            </div>
+          )}
         </Collapse>
       </Navbar>
     </div>
