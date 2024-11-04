@@ -42,7 +42,7 @@ const PastBookings = () => {
       title: "Bill",
       key: "price",
       dataIndex: "price",
-      render: (price: number) => `${price.toFixed(2)} BDT`,
+      render: (price: number) => `${price?.toFixed(2)} BDT`,
     },
     {
       title: "Time",
