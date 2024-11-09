@@ -31,38 +31,50 @@ const router = createBrowserRouter([
       },
       {
         path: "services",
-        element: <Service />
+        element: <Service />,
       },
       {
         path: "reviews",
-        element: <ReviewPage />
+        element: <ReviewPage />,
       },
       {
         path: "services/:id",
-        element: <ProtectedRoute role="user"><ServiceDetails /></ProtectedRoute>
+        element: (
+          // <ProtectedRoute role="user">
+            <ServiceDetails />
+          // </ProtectedRoute>
+        ),
       },
       {
         path: "/bookings",
-        element: <BookingPage />
-      }
+        element: <BookingPage />,
+      },
     ],
   },
   {
     path: "/login",
-    element: <Login />
+    element: <Login />,
   },
   {
     path: "/signUp",
-    element: <Register />
+    element: <Register />,
   },
   {
-    path: '/admin',
-    element: <ProtectedRoute role='admin'><DashboardLayout /></ProtectedRoute>,
+    path: "/admin",
+    element: (
+      <ProtectedRoute role="admin">
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
     children: routeGenerator(adminPaths),
   },
   {
-    path: '/user',
-    element: <ProtectedRoute role='user'><DashboardLayout /></ProtectedRoute>,
+    path: "/user",
+    element: (
+      <ProtectedRoute role="user">
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
     children: routeGenerator(userPaths),
   },
 ]);
